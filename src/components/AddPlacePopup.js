@@ -18,8 +18,8 @@ function AddPlacePopup({ isOpen, onClose }) {
                 className="popup__input popup__input_type_place"
                 placeholder="Название"
                 required
-                minlength="2"
-                maxlength="30" />
+                minLength="2"
+                maxLength="30" />
             <span className="place-card-error popup__error popup__error_visible"></span>
             <input
                 id="image-card"

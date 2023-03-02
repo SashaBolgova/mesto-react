@@ -1,7 +1,7 @@
 import React from 'react';
 import './PopupWithForm.css'
 
-function ImagePopup({ onClose, card }) {
+function ImagePopup({ card, onClose }) {
 
     return (
         <div className={`popup popup_image ${card ? "popup_opened" : ""}`} id="popup-image">
