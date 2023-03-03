@@ -9,8 +9,7 @@ function Main({ handleEditProfileClick, handleAddPlaceClick, handleEditAvatarCli
     const [userDescription, setUserDescription] = useState('');
     const [userAvatar, setUserAvatar] = useState('');
     const [cards, setCards] = useState([]);
-
-    
+  
     useEffect(() => {
         Promise.all([api.getUserInfo(), api.getInitialCards()])
             .then(([userData, cards]) => {

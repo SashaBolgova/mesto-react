@@ -18,8 +18,8 @@ function EditProfilePopup({ isOpen, onClose }) {
                 className="popup__input popup__input_type_name"
                 placeholder="Имя"
                 required
-                minlength="2"
-                maxlength="40" />
+                minLength="2"
+                maxLength="40" />
             <span className="name-profile-error popup__error popup__error_visible"></span>
             <input
                 id="profession-profile"
@@ -28,8 +28,8 @@ function EditProfilePopup({ isOpen, onClose }) {
                 className="popup__input popup__input_type_profession"
                 placeholder="О себе"
                 required
-                minlength="2"
-                maxlength="200" />
+                minLength="2"
+                maxLength="200" />
             <span className="profession-profile-error popup__error popup__error_visible"></span>
         </PopupWithForm>
     )
