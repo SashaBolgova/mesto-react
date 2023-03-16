@@ -1,8 +1,23 @@
-import React from 'react';
+import React, { useContext, useRef, useEffect } from 'react';
 import './PopupWithForm.css'
 import PopupWithForm from './PopupWithForm';
+import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
-function EditProfilePopup({ isOpen, onClose }) {
+function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
+    const currentUser = useContext(CurrentUserContext);
+    const avatarRef = useRef();
+
+    function handleSubmit(evt) {
+        evt.preventDefault();
+        onUpdateAvatar({
+            avatar: avatarRef.current.value,
+        });
+    }
+
+    useEffect(() => {
+        avatarRef.current.value = '';
+    }, [currentUser])
+
     return (
         <PopupWithForm
             onClose={onClose}
@@ -10,10 +25,12 @@ function EditProfilePopup({ isOpen, onClose }) {
             name="profile"
             title="Обновить аватар"
             buttonTitle="Сохранить"
+            onSubmit={handleSubmit}
         >
             <input
                 id="avatar-profile"
                 type="url"
+                ref={avatarRef}
                 name="avatar"
                 className="popup__input popup__input_type_avatar"
                 placeholder="Ссылка на аватар"
@@ -23,7 +40,7 @@ function EditProfilePopup({ isOpen, onClose }) {
     )
 }
 
-export default EditProfilePopup;
+export default EditAvatarPopup;
 
 
 
