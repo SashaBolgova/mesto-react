@@ -11,10 +11,10 @@ function ImagePopup({ card, onClose }) {
                     type="button" className="popup__toggle" aria-label="Закрытие попапа"></button>
                 <figure className="popup__image">
                     <img
-                        src={card ? card.link : ""} alt={card ? card.name: ""}
+                        src={card?.link} alt={card?.name}
                         className="popup__image-large"
                     />
-                    <figcaption className="popup__image-title">{card ? card.name: ""}</figcaption>
+                    <figcaption className="popup__image-title">{card?.name}</figcaption>
                 </figure>
             </div>
         </div>

@@ -25,7 +25,7 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
     useEffect(() => {
         setName('');
         setLink('');
-    }, []);
+    }, [isOpen]);
 
     return (
         <PopupWithForm
@@ -58,9 +58,7 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
                 placeholder="Ссылка на картинку"
                 required />
             <span className="image-card-error popup__error popup__error_visible"></span>
-
         </PopupWithForm>
     )
 }
 export default AddPlacePopup;
-

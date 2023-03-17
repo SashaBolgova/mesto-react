@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Header from './Header'
 import Footer from './Footer'
 import Main from './Main';
+import './App.css'
 import EditAvatarPopup from './EditAvatarPopup'
 import EditProfilePopup from './EditProfilePopup'
 import AddPlacePopup from './AddPlacePopup'
@@ -57,9 +58,13 @@ function App() {
 
     function handleCardLike(card) {
         const isLiked = card.likes.some(i => i._id === currentUser._id);
-        api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
-            setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
-        });
+        api.changeLikeCardStatus(card._id, !isLiked)
+            .then((newCard) => {
+                setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     }
 
     function handleCardDelete(card) {
@@ -67,15 +72,19 @@ function App() {
             .then(() => {
                 setCards((state) => state.filter((c) => c._id !== card._id && c));
             })
+            .catch((err) => {
+                console.log(err);
+            })
     }
 
     function handleUpdateUser(data) {
         api.changeUserInfo(data)
             .then(res => {
                 setCurrentUser(res);
-            })
-            .then(() => {
                 setEditProfilePopupOpen(false);
+            })
+            .catch((err) => {
+                console.log(err);
             })
     }
 
@@ -83,9 +92,10 @@ function App() {
         api.changeAvatar(data)
             .then(res => {
                 setCurrentUser(res);
-            })
-            .then(() => {
                 setEditAvatarPopupOpen(false);
+            })
+            .catch((err) => {
+                console.log(err);
             })
     }
 
@@ -93,11 +103,16 @@ function App() {
         api.addMyCard(data)
             .then((newCard) => {
                 setCards([newCard, ...cards]);
-            })
-            .then(() => {
                 setAddPlacePopupOpen(false);
             })
+            .catch((err) => {
+                console.log(err);
+            })
     }
+
+    useEffect(()  => {
+        document.body.classList.add('page');
+    });
 
     return (
         <CurrentUserContext.Provider value={currentUser}>
