@@ -110,10 +110,6 @@ function App() {
             })
     }
 
-    useEffect(()  => {
-        document.body.classList.add('page');
-    });
-
     return (
         <CurrentUserContext.Provider value={currentUser}>
             <div className="App">
