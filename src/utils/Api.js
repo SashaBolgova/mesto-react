@@ -90,7 +90,6 @@ class Api {
     })
       .then(this._checkAnswer);
   }
-
 }
 
 export const api = new Api({
