@@ -1,3 +1,4 @@
+
 class Api {
   constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
@@ -90,6 +91,7 @@ class Api {
     })
       .then(this._checkAnswer);
   }
+  
 }
 
 export const api = new Api({
